@@ -1,0 +1,6 @@
+{
+  "name": "Data Analyst Learning OS",
+  "description": "An offline-first, progress-tracked sandbox curriculum environment designed to master data analysis in one year.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
