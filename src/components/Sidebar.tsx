@@ -10,7 +10,9 @@ import {
   ClipboardList, 
   BarChart2, 
   Award, 
-  Settings 
+  Settings,
+  FileText,
+  Search
 } from 'lucide-react';
 
 export type TabId = 
@@ -24,7 +26,9 @@ export type TabId =
   | 'flashcards' 
   | 'progress' 
   | 'achievements' 
-  | 'settings';
+  | 'settings'
+  | 'documentation'
+  | 'search';
 
 interface SidebarProps {
   activeTab: TabId;
@@ -42,8 +46,10 @@ const NAV_ITEMS: NavItem[] = [
   // Core
   { id: 'dashboard', label: 'Dashboard', icon: Compass, category: 'core' },
   { id: 'curriculum', label: 'Syllabus Graph', icon: BookOpen, category: 'core' },
-  { id: 'practice', label: 'Adaptive Quiz', icon: BrainCircuit, category: 'core' },
+  { id: 'practice', label: 'Lessons & Quiz', icon: BrainCircuit, category: 'core' },
   { id: 'notebook', label: 'Analytics Cells', icon: Layers, category: 'core' },
+  { id: 'documentation', label: 'API Library', icon: FileText, category: 'core' },
+  { id: 'search', label: 'Global Search', icon: Search, category: 'core' },
   
   // IDEs
   { id: 'python_ide', label: 'Python Compiler', icon: Terminal, category: 'ide' },

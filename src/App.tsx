@@ -14,11 +14,14 @@ import { FlashcardsTab } from './components/FlashcardsTab';
 import { ProgressTab } from './components/ProgressTab';
 import { AchievementsTab } from './components/AchievementsTab';
 import { SettingsTab } from './components/SettingsTab';
+import { DocumentationTab } from './components/DocumentationTab';
+import { SearchTab } from './components/SearchTab';
 import { ProgressState } from './types';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>('dashboard');
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+  const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [isOfflineSimulated, setIsOfflineSimulated] = useState<boolean>(false);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
 
@@ -42,7 +45,13 @@ export default function App() {
     setActiveTab('practice');
   };
 
-  const handleNavigateToTab = (tabId: string) => {
+  const handleNavigateToTab = (tabId: string, param?: string) => {
+    if (tabId === 'practice' && param) {
+      setSelectedTopicId(param);
+    }
+    if (tabId === 'documentation' && param) {
+      setSelectedDocId(param);
+    }
     setActiveTab(tabId as TabId);
   };
 
@@ -91,6 +100,10 @@ export default function App() {
         return <AchievementsTab progress={progress} />;
       case 'settings':
         return <SettingsTab />;
+      case 'documentation':
+        return <DocumentationTab initialDocId={selectedDocId} />;
+      case 'search':
+        return <SearchTab onNavigateToTab={handleNavigateToTab} />;
       default:
         return <div className="text-slate-500 font-mono text-xs">Sandbox component loading error.</div>;
     }
